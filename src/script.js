@@ -57,19 +57,18 @@ function addZero(n) {
 function setBgGreet() {
   let today = new Date(),
     hour = today.getHours();
-
   if (hour < 12) {
     // Morning
     document.body.style.backgroundImage = "url('/dynamic-landing-page/assets/images/morning.png')";
-    greeting.textContent = 'Good Morning, ';
+    greeting.textContent = 'Good morning, ';
   } else if (hour < 18) {
     // Afternoon
     document.body.style.backgroundImage = "url('/dynamic-landing-page/assets/images/afternoon.png')";
-    greeting.textContent = 'Good Afternoon, ';
+    greeting.textContent = 'Good afternoon, ';
   } else {
     // Evening
     document.body.style.backgroundImage = "url('/dynamic-landing-page/assets/images/evening.png')";
-    greeting.textContent = 'Good Evening, ';
+    greeting.textContent = 'Good evening, ';
   }
 }
 
