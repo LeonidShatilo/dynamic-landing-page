@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Oswald', sans-serif;
-  src: url('/dynamic-landing-page/assets/font/Oswald.ttf');
+  font-family: 'Roboto';
+  src: url('/dynamic-landing-page/assets/font/Roboto.ttf');
   font-weight: normal;
   font-style: normal;
 }
@@ -12,12 +12,7 @@
 }
 
 body {
-  font-family: 'Oswald', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  font-family: 'Roboto';
   height: 100vh;
   color: white;
   text-shadow: 0px 0px 30px rgba(80, 80, 80, 0.80);
@@ -25,36 +20,84 @@ body {
   background-position: center;
 }
 
+.wrapper {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.btn {
+  height: 10%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
 #time {
+  margin-top: 5rem;
   font-size: 9rem;
   font-weight: 600;
   transition: 0.15s;
 }
 
+button {
+  margin: 0 2rem 2rem 0;
+  padding: 5px 10px;
+  border: 2.5px solid white;
+  border-radius: 6px;
+  font-family: Roboto, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: white;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 0.4s;
+  text-shadow: 0 0 50px rgb(0, 0, 0);
+  box-shadow: 0 0 30px rgba(50, 50, 50, 0.2);
+}
+
+button:hover {
+  opacity: 1;
+}
+
+button:active {
+  transform: scale(0.85);
+}
+
 h1 {
   margin-bottom: 3rem;
   font-size: 4rem;
-  font-weight: 400;
+  font-weight: 200;
   transition: 0.15s;
 }
 
 h2 {
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   opacity: 0.7;
   transition: 0.15s;
 }
 
-@media (max-width: 800px) {
+#focus {
+  margin-top: 0.6rem;
+  padding: 0 5rem;
+  text-align: justify;
+}
+
+@media (max-width: 900px) {
   #time {
     font-size: 7rem;
   }
   h1 {
-    margin-bottom: 2.8rem;
-    font-size: 2.8rem;
+    margin-bottom: 2.7rem;
+    font-size: 3.2rem;
   }
   h2 {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
   }
 }
 
@@ -63,11 +106,11 @@ h2 {
     font-size: 5rem;
   }
   h1 {
-    margin-bottom: 2rem;
-    font-size: 2rem;
+    margin-bottom: 2.4rem;
+    font-size: 2.3rem;
   }
   h2 {
-    font-size: 1rem;
+    font-size: 1.4rem;
   }
 }
 
@@ -76,11 +119,11 @@ h2 {
     font-size: 4rem;
   }
   h1 {
-    margin-bottom: 1.6rem;
-    font-size: 1.6rem;
+    margin-bottom: 2.1rem;
+    font-size: 1.8rem;
   }
   h2 {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -89,10 +132,23 @@ h2 {
     font-size: 3.5rem;
   }
   h1 {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.8rem;
+    font-size: 1.6rem;
+  }
+  h2 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  #time {
+    font-size: 3rem;
+  }
+  h1 {
+    margin-bottom: 1.6rem;
     font-size: 1.4rem;
   }
   h2 {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 }
