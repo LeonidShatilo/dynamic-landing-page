@@ -2,10 +2,12 @@
 const time = document.getElementById('time'),
   greeting = document.getElementById('greeting'),
   name = document.getElementById('name'),
-  focus = document.getElementById('focus');
+  focus = document.getElementById('focus'),
+  format = document.getElementById('format');
 
 /* Options */
-const showAmPm = true;
+let isShowAmPm = false;
+let isHour24 = true;
 
 /* Show Time */
 function showTime() {
@@ -15,14 +17,35 @@ function showTime() {
     sec = today.getSeconds();
 
   /* Set AM or PM */
-  const amPm = hour >= 12 ? '<span>PM</span>' : '<span>PM</span>';
+  let amPm = hour >= 12 ? '<span> PM</span>' : '<span> AM</span>';
 
   /* 12hr Format */
-  hour = hour % 12 || 12;
+  if (format.innerText === '12hr' && isHour24) {
+    hour = today.getHours();
+    isShowAmPm = false;
+  }
+  else {
+    hour = hour % 12 || 12;
+    isShowAmPm = true;
+  }
 
   /* Output Time */
-  time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)} ${showAmPm ? amPm : ''}`;
+  time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}${isShowAmPm ? amPm : ''}`;
   setTimeout(showTime, 1000);
+}
+
+function formatHours() {
+  let today = new Date(),
+    hour = today.getHours();
+  if (format.innerText === '12hr' && isHour24) {
+    format.innerText = '24hr';
+    isShowAmPm = false;    
+  }
+  else {
+    format.innerText = '12hr';
+    isShowAmPm = true;
+  }
+  console.log('Touch');
 }
 
 /* Add Zeros */
@@ -98,8 +121,9 @@ name.addEventListener('keypress', setName);
 name.addEventListener('blur', setName);
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
+format.addEventListener('click', formatHours);
 
-/* Run */
+/* Run Functions */
 showTime();
 setBgGreet();
 getName();
