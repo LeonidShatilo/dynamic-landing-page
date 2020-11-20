@@ -1,25 +1,24 @@
 /* DOM Elements */
 const time = document.getElementById('time'),
-  greeting = document.getElementById('greeting'),
-  name = document.getElementById('name'),
-  focus = document.getElementById('focus'),
-  format = document.getElementById('format');
+      greeting = document.getElementById('greeting'),
+      name = document.getElementById('name'),
+      focus = document.getElementById('focus'),
+      format = document.getElementById('format');
 
 /* Options */
 let isShowAmPm = false;
-let isHour24 = true;
 
 /* Show Time */
 function showTime() {
   let today = new Date(),
-    hour = today.getHours(),
-    min = today.getMinutes(),
-    sec = today.getSeconds();
+      hour = today.getHours(),
+      min = today.getMinutes(),
+      sec = today.getSeconds();
 
   /* Set AM or PM */
-  let amPm = hour >= 12 ? '<span> PM</span>' : '<span> AM</span>';
-  
-  if (format.innerText === '12hr' && isHour24) {
+  const amPm = hour >= 12 ? '<span> PM</span>' : '<span> AM</span>';
+
+  if (!isShowAmPm) {
     hour = today.getHours();
     isShowAmPm = false;
   } else {
@@ -28,18 +27,19 @@ function showTime() {
   }
 
   /* Output Time */
-  time.innerHTML = `${addZero(hour)}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}${isShowAmPm ? amPm : ''}`;
+  time.innerHTML =
+    `${addZero(hour)}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}${isShowAmPm ? amPm : ''}`;
   setTimeout(showTime, 1000);
 }
 
 /* Switch Formats Hours*/
 function formatHours() {
-  if (format.innerText === '12hr' && isHour24) {
+  if (!isShowAmPm) {
     format.innerText = '24hr';
-    isHour24 = false;
+    isShowAmPm = true;
   } else {
     format.innerText = '12hr';
-    isHour24 = true;
+    isShowAmPm = false;
   }
 }
 
@@ -54,15 +54,18 @@ function setBgGreet() {
     hour = today.getHours();
   if (hour < 12) {
     // Morning
-    document.body.style.backgroundImage = "url('/dynamic-landing-page/assets/images/morning.png')";
+    document.body.style.backgroundImage =
+      "url('/dynamic-landing-page/assets/images/morning.png')";
     greeting.textContent = 'Good morning, ';
   } else if (hour < 18) {
     // Afternoon
-    document.body.style.backgroundImage = "url('/dynamic-landing-page/assets/images/afternoon.png')";
+    document.body.style.backgroundImage =
+      "url('/dynamic-landing-page/assets/images/afternoon.png')";
     greeting.textContent = 'Good afternoon, ';
   } else {
     // Evening
-    document.body.style.backgroundImage = "url('/dynamic-landing-page/assets/images/evening.png')";
+    document.body.style.backgroundImage =
+      "url('/dynamic-landing-page/assets/images/evening.png')";
     greeting.textContent = 'Good evening, ';
   }
 }
@@ -78,9 +81,10 @@ function getName() {
 
 /* Set Name */
 function setName(e) {
+  const keyEnter = 13;
   if (e.type === 'keypress') {
     // Make sure enter is pressed
-    if (e.which == 13 || e.keyCode == 13) {
+    if (e.which == keyEnter || e.keyCode == keyEnter) {
       localStorage.setItem('name', e.target.innerText);
       name.blur();
     }
@@ -100,9 +104,10 @@ function getFocus() {
 
 /* Set Focus */
 function setFocus(e) {
+  const keyEnter = 13;
   if (e.type === 'keypress') {
     // Make sure enter is pressed
-    if (e.which == 13 || e.keyCode == 13) {
+    if (e.which == keyEnter || e.keyCode == keyEnter) {
       localStorage.setItem('focus', e.target.innerText);
       focus.blur();
     }
