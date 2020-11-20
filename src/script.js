@@ -18,13 +18,11 @@ function showTime() {
 
   /* Set AM or PM */
   let amPm = hour >= 12 ? '<span> PM</span>' : '<span> AM</span>';
-
-  /* 12hr Format */
+  
   if (format.innerText === '12hr' && isHour24) {
     hour = today.getHours();
     isShowAmPm = false;
-  }
-  else {
+  } else {
     hour = hour % 12 || 12;
     isShowAmPm = true;
   }
@@ -34,18 +32,15 @@ function showTime() {
   setTimeout(showTime, 1000);
 }
 
+/* Switch Formats Hours*/
 function formatHours() {
-  let today = new Date(),
-    hour = today.getHours();
   if (format.innerText === '12hr' && isHour24) {
     format.innerText = '24hr';
-    isShowAmPm = false;    
-  }
-  else {
+    isHour24 = false;
+  } else {
     format.innerText = '12hr';
-    isShowAmPm = true;
+    isHour24 = true;
   }
-  console.log('Touch');
 }
 
 /* Add Zeros */
