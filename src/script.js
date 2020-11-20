@@ -28,7 +28,7 @@ function showTime() {
   }
 
   /* Output Time */
-  time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}${isShowAmPm ? amPm : ''}`;
+  time.innerHTML = `${addZero(hour)}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}${isShowAmPm ? amPm : ''}`;
   setTimeout(showTime, 1000);
 }
 
