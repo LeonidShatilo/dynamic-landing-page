@@ -1,9 +1,9 @@
 /* DOM Elements */
 const time = document.getElementById('time'),
-      greeting = document.getElementById('greeting'),
-      name = document.getElementById('name'),
-      focus = document.getElementById('focus'),
-      format = document.getElementById('format');
+  greeting = document.getElementById('greeting'),
+  userName = document.getElementById('name'),
+  focus = document.getElementById('focus'),
+  format = document.getElementById('format');
 
 /* Options */
 let isShowAmPm = false;
@@ -11,9 +11,9 @@ let isShowAmPm = false;
 /* Show Time */
 function showTime() {
   let today = new Date(),
-      hour = today.getHours(),
-      min = today.getMinutes(),
-      sec = today.getSeconds();
+    hour = today.getHours(),
+    min = today.getMinutes(),
+    sec = today.getSeconds();
 
   /* Set AM or PM */
   const amPm = hour >= 12 ? '<span> PM</span>' : '<span> AM</span>';
@@ -27,8 +27,9 @@ function showTime() {
   }
 
   /* Output Time */
-  time.innerHTML =
-    `${addZero(hour)}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}${isShowAmPm ? amPm : ''}`;
+  time.innerHTML = `${addZero(hour)}<span>:</span>${addZero(
+    min
+  )}<span>:</span>${addZero(sec)}${isShowAmPm ? amPm : ''}`;
   setTimeout(showTime, 1000);
 }
 
@@ -54,18 +55,16 @@ function setBgGreet() {
     hour = today.getHours();
   if (hour < 12) {
     // Morning
-    document.body.style.backgroundImage =
-      "url('/dynamic-landing-page/assets/images/morning.png')";
+    document.body.style.backgroundImage = "url('../assets/images/morning.png')";
     greeting.textContent = 'Good morning, ';
   } else if (hour < 18) {
     // Afternoon
     document.body.style.backgroundImage =
-      "url('/dynamic-landing-page/assets/images/afternoon.png')";
+      "url('../assets/images/afternoon.png')";
     greeting.textContent = 'Good afternoon, ';
   } else {
     // Evening
-    document.body.style.backgroundImage =
-      "url('/dynamic-landing-page/assets/images/evening.png')";
+    document.body.style.backgroundImage = "url('../assets/images/evening.png')";
     greeting.textContent = 'Good evening, ';
   }
 }
@@ -73,9 +72,9 @@ function setBgGreet() {
 /* Get Name */
 function getName() {
   if (localStorage.getItem('name') === null) {
-    name.textContent = '[Enter Name]';
+    userName.textContent = '[Enter Name]';
   } else {
-    name.textContent = localStorage.getItem('name');
+    userName.textContent = localStorage.getItem('name');
   }
 }
 
@@ -86,7 +85,7 @@ function setName(e) {
     // Make sure enter is pressed
     if (e.which == keyEnter || e.keyCode == keyEnter) {
       localStorage.setItem('name', e.target.innerText);
-      name.blur();
+      userName.blur();
     }
   } else {
     localStorage.setItem('name', e.target.innerText);
@@ -116,10 +115,23 @@ function setFocus(e) {
   }
 }
 
-name.addEventListener('keypress', setName);
-name.addEventListener('blur', setName);
+function selectElementText(el) {
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  const sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+}
+
+userName.addEventListener('click', () => selectElementText(userName));
+focus.addEventListener('click', () => selectElementText(focus));
+
+userName.addEventListener('keypress', setName);
 focus.addEventListener('keypress', setFocus);
+
+userName.addEventListener('blur', setName);
 focus.addEventListener('blur', setFocus);
+
 format.addEventListener('click', formatHours);
 
 /* Run Functions */
