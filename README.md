@@ -1,10 +1,7 @@
 # dynamic-landing-page
 
-**[Task](https://github.com/rolling-scopes-school/tasks/blob/master/tasks/stage-0/projects.md#task-2-dynamic-landing-page-30)**
-
-**[DEMO](https://leonidshatilo.github.io/dynamic-landing-page/)**
-
----
+[![TASK](https://img.shields.io/badge/-TASK-green?style=flat)](https://github.com/rolling-scopes-school/tasks/blob/master/tasks/stage-0/projects.md#task-2-dynamic-landing-page-30)
+[![DEMO](https://img.shields.io/badge/-DEMO-blue?style=flat)](https://leonidshatilo.github.io/dynamic-landing-page/)
 
 **Description**
 
